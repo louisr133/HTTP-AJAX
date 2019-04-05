@@ -1,12 +1,16 @@
 import React from "react"
+import "../css/Post.css"
 
 class Post extends React.Component {
 
 
     render(){
         return(
-            <div>
-                <form>
+            <div className="post">
+
+
+                {/* EDIT FRIEND INFO */}
+                <form className="changeFriend">
                     <input
                         type="text"
                         placeholder="name"
@@ -43,10 +47,13 @@ class Post extends React.Component {
                     >
                     </input>
 
-                    <button type="button" onClick={() => this.props.putFriend(this.props.changedFriend.id ,this.props.changedFriend)}>Update Friend</button>
+                    <button className="changeButton" type="button" onClick={() => this.props.putFriend(this.props.changedFriend.id ,this.props.changedFriend)}>Update Friend</button>
                 </form>
 
-                <form>
+
+
+                {/* ADD NEW FRIEND */}
+                <form className="addFriend">
                     <input
                         type="text"
                         placeholder="name"
@@ -73,7 +80,7 @@ class Post extends React.Component {
                         onChange = {this.props.handleChange}
                     >
                     </input>
-                    <button type="button" onClick={() => this.props.addFriend(this.props.friend)}>Post New Friend</button>
+                    <button className="addButton" type="button" onClick={() => this.props.addFriend(this.props.friend)}>Post New Friend</button>
                 </form>
             </div> 
 

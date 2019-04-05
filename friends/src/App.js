@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
 import Friends from "./components/Friends"
 import Post from "./components/Post"
 import axios from "axios"
@@ -93,19 +93,25 @@ class App extends Component {
       }
     return (
       <div className="App">
-        <Post 
-          addFriend={this.addFriend} 
-          handleChange={this.handleChange}
-          friend={this.state.friend}
+        <div className="postsContainer">
+          <Post 
+              addFriend={this.addFriend} 
+              handleChange={this.handleChange}
+              friend={this.state.friend}
 
-          putFriend={this.putFriend}
-          handleUpdate={this.handleUpdate}
-          changedFriend={this.state.changedFriend}
+              putFriend={this.putFriend}
+              handleUpdate={this.handleUpdate}
+              changedFriend={this.state.changedFriend}
+            />
+        </div>
+        
+        <div className="friendsContainer">
+          <Friends
+            deleteFriend={this.deleteFriend} 
+            friends={this.state.friends}
           />
-        <Friends
-          deleteFriend={this.deleteFriend} 
-          friends={this.state.friends}
-        />
+        </div>
+        
       </div>
     );
   }

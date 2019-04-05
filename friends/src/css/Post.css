@@ -1,0 +1,13 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-right: 15px;
+}
+.changeFriend input {
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+.addFriend input {
+  margin-right: 15px;
+}
