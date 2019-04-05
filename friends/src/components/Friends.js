@@ -9,9 +9,6 @@ class Friends extends React.Component {
             this.props.friends.map(f => {
                return (
                 <Friend 
-                    putFriend={this.props.putFriend}
-                    handleUpdate={this.props.handleUpdate}
-                    changedFriend={this.props.changedFriend}
                     deleteFriend={this.props.deleteFriend} 
                     key={f.id}
                     id={f.id}

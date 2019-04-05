@@ -20,6 +20,7 @@ class App extends Component {
       name: "",
       age: "",
       email: "",
+      id: '',
     }
   }
 
@@ -59,16 +60,19 @@ class App extends Component {
       .then(res => 
       this.setState({
         friends: res.data,
-      })
+      }).catch(err => console.log(err))
     ))
     .catch(err => console.log(err))
 
   }
   
   deleteFriend = personID => {
-    this.setState({
-      friends: this.state.friends.filter(i => i.id !== personID)
-    })
+    axios.delete(`http://localhost:5000/friends/${personID}`)
+    .then(() => axios.get("http://localhost:5000/friends/") 
+    .then(res => this.setState({
+      friends: res.data
+    })))
+    .catch(err => console.log(err))
     
   }
 
@@ -77,26 +81,28 @@ class App extends Component {
     .then(res => (
       this.setState({
         friends: res.data,
-      })
-      )
-    )
+      })))
     .catch(err => console.log(err ))
   }
 
-
+  
+  
   render() {
-
+    if(this.state === null){
+        return <div> Loading </div>
+      }
     return (
       <div className="App">
         <Post 
           addFriend={this.addFriend} 
           handleChange={this.handleChange}
           friend={this.state.friend}
-          />
-        <Friends
+
           putFriend={this.putFriend}
           handleUpdate={this.handleUpdate}
           changedFriend={this.state.changedFriend}
+          />
+        <Friends
           deleteFriend={this.deleteFriend} 
           friends={this.state.friends}
         />
